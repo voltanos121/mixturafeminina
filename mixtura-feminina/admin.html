@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f1ed">
+  <title>Administração | Mixtura Feminina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"><script src="js/admin.js" defer></script>
+</head>
+<body class="admin-body">
+  <header class="admin-top"><div class="container admin-top-inner"><a class="brand" href="index.html"><span class="brand-mark">M</span><span class="brand-name">Mixtura <b>Feminina</b><small>PAINEL DA LOJA</small></span></a><a href="index.html" class="text-link">← Voltar à loja</a></div></header>
+  <main class="container admin-main">
+    <section class="login-card" id="loginPanel"><p class="eyebrow">ACESSO RESTRITO</p><h1>Área <em>administrativa.</em></h1><p>Entre com a senha de administrador para gerenciar sua vitrine.</p><form id="loginForm"><label>Senha de acesso<input type="password" id="adminPassword" required autocomplete="current-password" placeholder="Digite sua senha"></label><button class="button button-dark" type="submit">Entrar no painel →</button><p class="form-message" id="loginMessage"></p></form></section>
+    <section id="dashboard" hidden>
+      <div class="admin-heading"><div><p class="eyebrow">GERENCIE SUA LOJA</p><h1>Painel <em>Mixtura.</em></h1></div><button class="button button-outline" id="logoutButton">Sair</button></div>
+      <div class="admin-tabs"><button class="tab-button active" data-tab="productsTab">Produtos</button><button class="tab-button" data-tab="storeTab">Informações da loja</button></div>
+      <section class="admin-tab-content" id="productsTab">
+        <div class="admin-section-heading"><div><h2>Seus produtos</h2><p>Adicione, edite ou remova peças da vitrine.</p></div><button class="button button-dark" id="newProductButton">+ Novo produto</button></div>
+        <form class="editor-form" id="productForm" hidden>
+          <h3 id="productFormTitle">Adicionar produto</h3><input type="hidden" id="productId">
+          <div class="form-grid"><label>Nome do produto<input id="productName" required maxlength="70" placeholder="Ex.: Vestido Aurora"></label><label>Categoria<select id="productCategory"><option>Vestidos</option><option>Blusas</option><option>Conjuntos</option><option>Calças</option><option>Saias</option><option>Acessórios</option></select></label><label>Preço (R$)<input id="productPrice" type="number" required min="0" step="0.01" placeholder="129.90"></label><label class="full-field">Imagem do produto<input id="productImageFile" type="file" accept="image/*"><small>Escolha uma foto do computador. A imagem será otimizada antes de ser salva.</small><span id="imageFileName" class="image-file-name">Nenhuma imagem selecionada.</span><img id="productImagePreview" class="admin-image-preview" alt="Prévia da imagem do produto" hidden></label><label class="full-field">Ou informe uma URL de imagem<input id="productImage" type="url" placeholder="https://..."></label><label class="full-field">Descrição curta<textarea id="productDescription" rows="2" maxlength="180" placeholder="Descreva a peça..."></textarea></label><label class="check-label"><input id="productFeatured" type="checkbox"> Destacar como novidade</label></div>
+          <div class="form-actions"><button type="submit" class="button button-dark">Salvar produto</button><button type="button" class="button button-outline" id="cancelProduct">Cancelar</button></div><p class="form-message" id="productMessage"></p>
+        </form>
+        <div class="admin-product-list" id="adminProductList"></div>
+      </section>
+      <section class="admin-tab-content" id="storeTab" hidden>
+        <div class="admin-section-heading"><div><h2>Informações da loja</h2><p>Atualize os dados exibidos no site.</p></div></div>
+        <form class="editor-form visible-form" id="storeForm">
+          <div class="form-grid"><label>Nome da loja<input id="storeName" required></label><label>Telefone / WhatsApp<input id="storePhoneInput" required placeholder="+55 21 99999-9999"></label><label class="full-field">Endereço completo<input id="storeAddressInput"></label><label>Instagram (usuário)<input id="storeInstagramInput" placeholder="@sualoja"></label><label>Link do Instagram<input id="storeInstagramUrlInput" type="url" placeholder="https://instagram.com/..."></label><label class="full-field">Link do Google Maps<input id="storeMapInput" type="url" placeholder="https://maps.google.com/..."></label><label class="full-field">Descrição da loja<textarea id="storeDescriptionInput" rows="4"></textarea></label></div>
+          <div class="form-actions"><button type="submit" class="button button-dark">Salvar informações</button></div><p class="form-message" id="storeMessage"></p>
+        </form>
+      </section>
+      <aside class="admin-warning"><b>Importante:</b> este painel salva as alterações neste navegador usando armazenamento local. Para que as mudanças apareçam para todos os visitantes e em outros dispositivos, é necessário conectar um banco de dados e proteger o acesso no servidor (por exemplo, Supabase).</aside>
+    </section>
+  </main>
+</body>
+</html>
